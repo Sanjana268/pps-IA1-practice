@@ -1,3 +1,4 @@
+
 #include<stdio.h>
 int input_array_size()
 {
@@ -27,7 +28,7 @@ int sum_n_arrays(int n,int a[n])
 
 void output(int n,int a[n],int sum)
 {
-  printf("the sum of %d inputs of is %d\n",n,sum);
+  printf("the sum of %d inputs is %d\n",n,sum);
 
 }
 
