@@ -1,39 +1,31 @@
 #include <stdio.h>
-float inp()
+typedef struct cmplx
 {
-    float n;
-    printf("Enter no. - ");
-    scanf("%f", &n);
+    float r, i;
+} Clx;
+
+Clx inp()
+{
+    Clx n;
+    printf("Enter real and imaginary parts separated by a space - ");
+    scanf("%f %f", &n.r, &n.i);
     return n;
 }
-float sqrtt(float n)
+Clx add(Clx a, Clx b)
 {
-    float str = 1, end = n, ans, mid;
-    while (str <= end)
-    {
-        mid = (str + end) / 2;
-        if (mid * mid == n)
-        {
-            ans = mid;
-            break;
-        }
-        if (mid * mid < n)
-        {
-            str = mid + 1;
-            ans = mid;
-        }
-        else
-            end = mid - 1;
-    }
-    float inc = 0.1;
-    for (int i = 0; i < 6; i++)
-    {
-        while (ans * ans <= n)
-        {
-            ans += inc;
-        }
-        ans -= inc;
-        inc /= 10;
-    }
-    return ans;
+    Clx s;
+    s.r = a.r + b.r;
+    s.i = a.i + b.i;
+    return s;
+}
+void out(Clx a, Clx b, Clx s)
+{
+    printf("%g+%gi + %g+%gi = %g+%gi", a.r, a.i, b.r, b.i, s.r, s.i);
+}
+int main()
+{
+    Clx a = inp(), b = inp(), s;
+    s = add(a, b);
+    out(a, b, s);
+    return 0;
 }
